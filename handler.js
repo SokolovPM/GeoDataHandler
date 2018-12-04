@@ -22,42 +22,41 @@ module.exports = function(link, callback) {
 
   let result = {};
   arr.forEach(obj => {
-    if (!obj.e) {
-      continue;
-    }
-    let code = '' + obj.e;
-    if (code.startsWith('--') || code.startsWith('..')) {
-      code = code.substring(2);
-    }
-    if (code.startsWith('-') || code.startsWith('.')) {
-      code = code.substring(1);
-    }
-    if (code.endsWith('--') || code.endsWith('..')) {
-      code = code.substring(0, code.length - 2)
-    }
-    if (code.endsWith('-') || code.endsWith('.')) {
-      code = code.substring(0, code.length - 1)
-    }
-    if (code.startsWith('--') || code.startsWith('..')) {
-      code = code.substring(2);
-    }
-    if (code.startsWith('-') || code.startsWith('.')) {
-      code = code.substring(1);
-    }
-    if (code.endsWith('--') || code.endsWith('..')) {
-      code = code.substring(0, code.length - 2)
-    }
-    if (code.endsWith('-') || code.endsWith('.')) {
-      code = code.substring(0, code.length - 1)
-    }
-    if (code.includes('-') || code.includes('.')) {
-      code = 'other'
-    }
+    if(obj.e) {
+      let code = '' + obj.e;
+      if (code.startsWith('--') || code.startsWith('..')) {
+        code = code.substring(2);
+      }
+      if (code.startsWith('-') || code.startsWith('.')) {
+        code = code.substring(1);
+      }
+      if (code.endsWith('--') || code.endsWith('..')) {
+        code = code.substring(0, code.length - 2)
+      }
+      if (code.endsWith('-') || code.endsWith('.')) {
+        code = code.substring(0, code.length - 1)
+      }
+      if (code.startsWith('--') || code.startsWith('..')) {
+        code = code.substring(2);
+      }
+      if (code.startsWith('-') || code.startsWith('.')) {
+        code = code.substring(1);
+      }
+      if (code.endsWith('--') || code.endsWith('..')) {
+        code = code.substring(0, code.length - 2)
+      }
+      if (code.endsWith('-') || code.endsWith('.')) {
+        code = code.substring(0, code.length - 1)
+      }
+      if (code.includes('-') || code.includes('.')) {
+        code = 'other'
+      }
 
-    if (!result[code]) {
-      result[code] = []
+      if (!result[code]) {
+        result[code] = []
+      }
+      result[code].push([obj.a, obj.b, obj.c, obj.d].join(' '));
     }
-    result[code].push([obj.a, obj.b, obj.c, obj.d].join(' '));
   })
 
   fs.mkdirSync('./result');
