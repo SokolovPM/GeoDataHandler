@@ -22,7 +22,10 @@ module.exports = function(link, callback) {
 
   let result = {};
   arr.forEach(obj => {
-    let code = obj.e;
+    if (!obj.e) {
+      continue;
+    }
+    let code = '' + obj.e;
     if (code.startsWith('--') || code.startsWith('..')) {
       code = code.substring(2);
     }
