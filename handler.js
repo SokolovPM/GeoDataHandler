@@ -55,7 +55,7 @@ module.exports = function(link, callback) {
       if (!result[code]) {
         result[code] = []
       }
-      result[code].push([obj.a, obj.b, obj.c, obj.d].join(' '));
+      result[code].push([obj.a, obj.b, obj.c, obj.d, obj.e].join(' '));
     }
   })
 
