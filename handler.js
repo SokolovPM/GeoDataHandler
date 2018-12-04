@@ -61,7 +61,7 @@ module.exports = function(link, callback) {
 
   fs.mkdirSync('./result');
   Object.keys(result).forEach(code => {
-    fs.appendFileSync(`./result/${code}.txt`, result[code].join('\n'));
+    fs.appendFileSync(`./result/${code}.txt`, result[code].join('\r\n'));
   })
 
   zipdir('./result', { saveTo: 'result.zip' }, function (err, buffer) {
